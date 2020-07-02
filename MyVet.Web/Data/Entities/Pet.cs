@@ -22,7 +22,7 @@ namespace MyVet.Web.Data.Entities
         public string Race { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligtorio")]
-        [DataType(DataType.DateTime)]
+//        [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Born { get; set; }
 
