@@ -17,8 +17,8 @@ namespace MyVet.Web.Data.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligtorio")]
         [Display(Name = "Date")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
 
         public string Remarks { get; set; }

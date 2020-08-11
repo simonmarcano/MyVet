@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MyVet.Common": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false,
+      "authenticationMode": "Windows",
+      "nativeDebugging": false
+    }
+  }
+}

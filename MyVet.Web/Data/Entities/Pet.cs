@@ -21,9 +21,9 @@ namespace MyVet.Web.Data.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} no debe tener mas de {1} caracteres")]
         public string Race { get; set; }
 
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "El campo {0} es obligtorio")]
-//        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime Born { get; set; }
 
         public string Remarks { get; set; }
@@ -43,6 +43,8 @@ namespace MyVet.Web.Data.Entities
         public ICollection<History> Histories { get; set; }
 
         public ICollection<Agenda> Agendas { get; set; }
+
+        public string prueba { get; set; }
     }
 
 }

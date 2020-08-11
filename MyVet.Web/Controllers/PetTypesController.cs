@@ -125,25 +125,36 @@ namespace MyVet.Web.Controllers
             }
 
             var petType = await _context.PetTypes
+                .Include(m => m.Pets)   // incluyo para valida
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (petType == null)
             {
                 return NotFound();
             }
+            if (petType.Pets.Count > 0)
+            {
+                ModelState.AddModelError(String.Empty, "El tipo de mascota tiene mascotas asociadas");
+                return RedirectToAction(nameof(Index));
+            }
 
-            return View(petType);
-        }
+            //            return View(petType); COMENTO
 
-        // POST: PetTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var petType = await _context.PetTypes.FindAsync(id);
+            // agrego esto del POST (la funcion siguiente)
             _context.PetTypes.Remove(petType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        // POST: PetTypes/Delete/5
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> DeleteConfirmed(int id)
+//        {
+//            var petType = await _context.PetTypes.FindAsync(id);
+//            _context.PetTypes.Remove(petType);
+//            await _context.SaveChangesAsync();
+//            return RedirectToAction(nameof(Index));
+//        }
 
         private bool PetTypeExists(int id)
         {
